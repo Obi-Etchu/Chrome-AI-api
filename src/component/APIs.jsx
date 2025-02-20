@@ -125,6 +125,7 @@ function App() {
   };
 
   return (
+    <div className='entire'>
     <div className="chat-container">
       <div className="chat-window">
         <div className="messages-container">
@@ -202,6 +203,7 @@ function App() {
           </div>
         </form>
       </div>
+    </div>
     </div>
   );
 }

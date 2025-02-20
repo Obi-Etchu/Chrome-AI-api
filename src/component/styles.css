@@ -1,13 +1,19 @@
 /* Reset and base styles */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
 
+.entire{
+  height: 100%;
+  display: grid;
+  place-items: center; /* Centers both horizontally & vertically */
+}
+
 /* Chat container styles */
 .chat-container {
   min-height: 100vh;
   background-color: #f3f4f6;
   padding: 1rem;
   width: 170%;
-  margin-left: -120px;
+
 }
 
 .chat-window {
@@ -66,7 +72,7 @@
 
   .chat-container{
     width: 90%;
-    margin-left: none;
+    
   }
 }
 
@@ -78,7 +84,6 @@
   .chat-container {
     padding: 0.5rem;
     width: 90%;
-    margin-left: none;
   }
   
   .messages-container {
