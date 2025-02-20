@@ -66,6 +66,7 @@
 
   .chat-container{
     width: 90%;
+    margin: none;
   }
 }
 
@@ -77,6 +78,7 @@
   .chat-container {
     padding: 0.5rem;
     width: 90%;
+    margin: none;
   }
   
   .messages-container {
