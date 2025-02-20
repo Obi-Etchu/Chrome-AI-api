@@ -6,7 +6,8 @@
   min-height: 100vh;
   background-color: #f3f4f6;
   padding: 1rem;
-  width: 150%;
+  width: 170%;
+  margin-left: -120px;
 }
 
 .chat-window {
