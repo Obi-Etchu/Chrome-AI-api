@@ -1,5 +1,3 @@
-import { useState } from 'react'
-
 import './App.css'
 import AITextProcessor from './component/APIs'
 import { Globe2 } from 'lucide-react';
@@ -8,10 +6,10 @@ function App() {
   return (
     <>
     <header className="header">
-          <h1 className="title">
+          <h2 className="title" style={{fontSize:"40px"}}>
             <Globe2 width="45px" height="45px" />
-            LanguageSync
-          </h1>
+            GlobaLingo
+          </h2>
           <p className="subtitle">Detect, translate, and summarize text instantly</p>
     </header>
       <AITextProcessor/>

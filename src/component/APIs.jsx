@@ -1,20 +1,21 @@
-import React, { useState } from 'react';
+import  { useState } from 'react';
 import { Send } from 'lucide-react';
 import './styles.css';
 
 const languageOptions = [
   { code: 'en', name: 'English' },
-  { code: 'es', name: 'Spanish' },
-  { code: 'fr', name: 'French' },
-  { code: 'de', name: 'German' },
-  { code: 'it', name: 'Italian' },
   { code: 'pt', name: 'Portuguese' },
+  { code: 'es', name: 'Spanish' },
   { code: 'ru', name: 'Russian' },
-  { code: 'zh', name: 'Chinese' },
-  { code: 'ja', name: 'Japanese' },
-  { code: 'ko', name: 'Korean' },
-  { code: 'ar', name: 'Arabic' },
-  { code: 'hi', name: 'Hindi' }
+  { code: 'tr', name: 'Turkish' },
+  { code: 'fr', name: 'French' },
+  // { code: 'de', name: 'German' },
+  // { code: 'it', name: 'Italian' },
+  // { code: 'zh', name: 'Chinese' },
+  // { code: 'ja', name: 'Japanese' },
+  // { code: 'ko', name: 'Korean' },
+  // { code: 'ar', name: 'Arabic' },
+  // { code: 'hi', name: 'Hindi' }
 ];
 
 function App() {
@@ -176,7 +177,7 @@ function App() {
 
                 {message.type === 'user' && message.language && (
                   <div className="message-meta">
-                    Language: {message.language}
+                    detected Language: {message.language}
                   </div>
                 )}
 

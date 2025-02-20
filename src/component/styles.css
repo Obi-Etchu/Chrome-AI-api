@@ -6,12 +6,12 @@
   min-height: 100vh;
   background-color: #f3f4f6;
   padding: 1rem;
-  max-width: 100rem;
+  width: 150%;
 }
 
 .chat-window {
   width: 95%;
-  max-width: 100rem; /* Increased from 42rem */
+  max-width: 70rem; /* Increased from 42rem */
   margin: 0 auto;
   background-color: white;
   border-radius: 0.5rem;
