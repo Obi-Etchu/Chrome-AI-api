@@ -1,4 +1,4 @@
-import  { useState } from 'react';
+import { useState } from 'react';
 import { Send } from 'lucide-react';
 import './styles.css';
 
@@ -9,13 +9,6 @@ const languageOptions = [
   { code: 'ru', name: 'Russian' },
   { code: 'tr', name: 'Turkish' },
   { code: 'fr', name: 'French' },
-  // { code: 'de', name: 'German' },
-  // { code: 'it', name: 'Italian' },
-  // { code: 'zh', name: 'Chinese' },
-  // { code: 'ja', name: 'Japanese' },
-  // { code: 'ko', name: 'Korean' },
-  // { code: 'ar', name: 'Arabic' },
-  // { code: 'hi', name: 'Hindi' }
 ];
 
 function App() {
@@ -23,6 +16,12 @@ function App() {
   const [inputText, setInputText] = useState('');
   const [selectedLanguage, setSelectedLanguage] = useState('en');
   const [showLanguageSelect, setShowLanguageSelect] = useState({});
+
+  // Function to get full language name from language code
+  const getLanguageName = (languageCode) => {
+    const language = languageOptions.find(lang => lang.code === languageCode);
+    return language ? language.name : languageCode;
+  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -126,84 +125,84 @@ function App() {
 
   return (
     <div className='entire'>
-    <div className="chat-container">
-      <div className="chat-window">
-        <div className="messages-container">
-          {messages.map((message) => (
-            <div 
-              key={message.id} 
-              className={`message-wrapper ${message.type}`}
-            >
-              <div className={`message ${message.type}`}>
-                <div className="message-text">{message.text}</div>
-                
-                {message.type === 'system' && !message.responded && !showLanguageSelect[message.responseFor] && (
-                  <div className="system-buttons">
-                    <button 
-                      className="system-button"
-                      onClick={() => handleTranslationResponse(message.responseFor, true)}
-                    >
-                      Yes
-                    </button>
-                    <button 
-                      className="system-button"
-                      onClick={() => handleTranslationResponse(message.responseFor, false)}
-                    >
-                      No
-                    </button>
-                  </div>
-                )}
+      <div className="chat-container">
+        <div className="chat-window">
+          <div className="messages-container">
+            {messages.map((message) => (
+              <div 
+                key={message.id} 
+                className={`message-wrapper ${message.type}`}
+              >
+                <div className={`message ${message.type}`}>
+                  <div className="message-text">{message.text}</div>
+                  
+                  {message.type === 'system' && !message.responded && !showLanguageSelect[message.responseFor] && (
+                    <div className="system-buttons">
+                      <button 
+                        className="system-button"
+                        onClick={() => handleTranslationResponse(message.responseFor, true)}
+                      >
+                        Yes
+                      </button>
+                      <button 
+                        className="system-button"
+                        onClick={() => handleTranslationResponse(message.responseFor, false)}
+                      >
+                        No
+                      </button>
+                    </div>
+                  )}
 
-                {showLanguageSelect[message.responseFor] && (
-                  <div className="language-select-container">
-                    <select
-                      className="language-select"
-                      value={selectedLanguage}
-                      onChange={(e) => setSelectedLanguage(e.target.value)}
-                    >
-                      {languageOptions.map(lang => (
-                        <option key={lang.code} value={lang.code}>
-                          {lang.name}
-                        </option>
-                      ))}
-                    </select>
-                    <button 
-                      className="system-button"
-                      onClick={() => handleTranslate(message.responseFor)}
-                    >
-                      Translate
-                    </button>
-                  </div>
-                )}
+                  {showLanguageSelect[message.responseFor] && (
+                    <div className="language-select-container">
+                      <select
+                        className="language-select"
+                        value={selectedLanguage}
+                        onChange={(e) => setSelectedLanguage(e.target.value)}
+                      >
+                        {languageOptions.map(lang => (
+                          <option key={lang.code} value={lang.code}>
+                            {lang.name}
+                          </option>
+                        ))}
+                      </select>
+                      <button 
+                        className="system-button"
+                        onClick={() => handleTranslate(message.responseFor)}
+                      >
+                        Translate
+                      </button>
+                    </div>
+                  )}
 
-                {message.type === 'user' && message.language && (
-                  <div className="message-meta">
-                    detected Language: {message.language}
-                  </div>
-                )}
+                  {message.type === 'user' && message.language && (
+                    <div className="message-meta">
+                      Detected Language: {getLanguageName(message.language)}
+                    </div>
+                  )}
 
-                <div className="message-meta">{message.timestamp}</div>
+                  <div className="message-meta">{message.timestamp}</div>
+                </div>
               </div>
-            </div>
-          ))}
-        </div>
-        
-        <form onSubmit={handleSubmit} className="input-form">
-          <div className="input-container">
-            <textarea
-              value={inputText}
-              onChange={(e) => setInputText(e.target.value)}
-              placeholder="Type your message..."
-              className="input-field"
-              rows={1}
-            />
-            <button type="submit" className="send-button">
-              <Send size={20} />
-            </button>
+            ))}
           </div>
-        </form>
+          
+          <form onSubmit={handleSubmit} className="input-form">
+            <div className="input-container">
+              <textarea
+                value={inputText}
+                onChange={(e) => setInputText(e.target.value)}
+                placeholder="Type your message..."
+                className="input-field"
+                rows={1}
+              />
+              <button type="submit" className="send-button">
+                <Send size={20} />
+              </button>
+            </div>
+          </form>
+        </div>
       </div>
-    </div>
     </div>
   );
 }
